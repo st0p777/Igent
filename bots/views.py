@@ -50,11 +50,11 @@ def VK():
 
 def TG():
     vk_chat = 1
+    logging.basicConfig(level=logging.INFO)
+    bot = Bot(token='1930547591:AAF8qqEECajgZiNwepLuQQiJPygCikFAIgY')
+    dp = Dispatcher(bot)
     while True:
         try:
-            logging.basicConfig(level=logging.INFO)
-            bot = Bot(token='1930547591:AAF8qqEECajgZiNwepLuQQiJPygCikFAIgY')
-            dp = Dispatcher(bot)
             @dp.message_handler()
             async def MSQ(message: types.Message):
                 msq = message.text.split()
