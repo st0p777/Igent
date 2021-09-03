@@ -10,12 +10,12 @@ from django.http import HttpResponseRedirect
 
 
 def send_msq_vk(vk_chat, msq):
-    session = vk_api.VkApi(token='d9b97cbd079b801a1c8c1fc85a295865f861913439f1c407fe18269be5393d724999b3596ec081b1bc85e')
+    session = vk_api.VkApi(token='')
     session.method('messages.send', {'chat_id': vk_chat, 'message': msq, 'random_id': 0})
 
 
 async def send_msq_tg(tg_chat, msg):
-    bot = Bot(token='1930547591:AAF8qqEECajgZiNwepLuQQiJPygCikFAIgY')
+    bot = Bot(token=':')
     await bot.send_message(chat_id=tg_chat, text=msg)
     await bot.close()
 
@@ -24,7 +24,7 @@ def VK():
     tg_chat = -568578461
     while True:
         try:
-            session = vk_api.VkApi(token='d9b97cbd079b801a1c8c1fc85a295865f861913439f1c407fe18269be5393d724999b3596ec081b1bc85e')
+            session = vk_api.VkApi(token='')
             longPoll = VkBotLongPoll(session, 206623626)
             for event in longPoll.listen():
                 if event.type == VkBotEventType.MESSAGE_NEW:
@@ -51,7 +51,7 @@ def VK():
 def TG():
     vk_chat = 1
     logging.basicConfig(level=logging.INFO)
-    bot = Bot(token='1930547591:AAF8qqEECajgZiNwepLuQQiJPygCikFAIgY')
+    bot = Bot(token=':')
     dp = Dispatcher(bot)
     while True:
         try:
